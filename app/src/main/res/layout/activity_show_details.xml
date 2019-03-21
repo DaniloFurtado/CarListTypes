@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+                name="itemCar"
+                type="desenv.danilo.modelbinding.VehicleBind" />
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/rootLayouMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:title="@string/detail"
+                    app:popupTheme="@style/AppTheme.AppBarOverlay"
+                    app:layout_scrollFlags="scroll|enterAlways"/>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_card_list_detail"
+                android:layout_marginBottom="@dimen/margin_card_list_detail"
+                android:layout_marginRight="@dimen/margin_card_list_detail"
+                android:layout_marginLeft="@dimen/margin_card_list_detail"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/itemRoot"
+                    android:background="?attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:id="@+id/imageUser"
+                        android:layout_width="220dp"
+                        android:layout_height="220dp"
+                        app:setUrlImageNoRound="@{itemCar.picturyUrl}"
+                        tools:srcCompat="@tools:sample/avatars"
+                        android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
+                <TextView
+                        android:text="@{itemCar.makeModel}"
+                        android:hint="sdfafdas"
+                        android:textSize="20sp"
+                        android:typeface="sans"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="16dp"
+                        app:layout_constraintTop_toBottomOf="@+id/imageUser"/>
+                <TextView
+                        android:text="@string/vendor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView2" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+                <TextView
+                        android:text="@{itemCar.vendor.nameVendor}"
+                        android:hint="sdfafdas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView3" app:layout_constraintStart_toEndOf="@+id/textView2"
+                        android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/textView"
+                        app:layout_constraintEnd_toStartOf="@+id/imageUser" android:layout_marginEnd="8dp"/>
+                <TextView
+                        android:text="@string/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView4" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/textView2"
+                        android:layout_marginTop="8dp"/>
+                <TextView
+                        android:text="@{itemCar.status}"
+                        android:hint="sdfafdas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView5" app:layout_constraintStart_toEndOf="@+id/textView4"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toTopOf="@+id/textView4"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                        app:layout_constraintEnd_toStartOf="@+id/imageUser" android:layout_marginEnd="8dp"/>
+                <TextView
+                        android:text="@{itemCar.arConditino ? @string/ar_condition : @string/no_ar_condition}"
+                        android:hint="sdfafdas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView6" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/textView4"
+                        android:layout_marginTop="8dp" android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageUser"/>
+                <TextView
+                        android:text="@{itemCar.transmissionType}"
+                        android:hint="sdfafdas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView7" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/textView6"
+                        android:layout_marginTop="8dp" app:layout_constraintEnd_toStartOf="@+id/imageUser"
+                        android:layout_marginEnd="8dp"/>
+                <TextView
+                        android:text="@{itemCar.fuelType}"
+                        android:hint="sdfafdas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView8"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageUser" android:layout_marginEnd="8dp"/>
+                <TextView
+                        android:text="@string/passengers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView9" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/textView8"
+                        android:layout_marginTop="8dp"/>
+                <TextView
+                        android:text="@{itemCar.passengerQuantity}"
+android:hint="sdfafdas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView10" app:layout_constraintStart_toEndOf="@+id/textView9"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                        app:layout_constraintTop_toTopOf="@+id/textView9"/>
+                <TextView
+                        android:text="@{itemCar.rateTotalAmount}"
+                        android:hint="54"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:typeface="sans"
+                        android:textStyle="bold"
+                        android:id="@+id/textView11"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView12"
+                        app:layout_constraintEnd_toEndOf="@+id/textView12"
+                        app:layout_constraintStart_toStartOf="@+id/textView12"/>
+                <TextView
+                        android:text="@string/total_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView12"
+                        app:layout_constraintStart_toEndOf="@+id/imageUser" android:layout_marginStart="16dp"
+                        app:layout_constraintTop_toTopOf="@+id/imageUser"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

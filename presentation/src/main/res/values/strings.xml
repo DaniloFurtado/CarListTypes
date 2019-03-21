@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">presentation</string>
+    <string name="invalid_paramter">Paramêtro inválido.</string>
+    <string name="error">Erro ao executar</string>
+    <string name="error_api">Parece que o servidor não se comportou bem</string>
+    <string name="error_time_out">Servidor está demorando muito pra Responder :/</string>
+    <string name="error_connectin">Parece que você está sem Internet</string>
+    <string name="hint_item_user">DaniloFurtado</string>
+    <string name="security_update_google_paly">Não foi possível realizar a transação. Por favor atualize o seu Google play e tente novamente</string>
+</resources>

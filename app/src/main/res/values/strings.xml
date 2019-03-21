@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Car List Types</string>
+
+    <string name="updated">Atualizado:</string>
+    <string name="not_informed">Não informado</string>
+    <string name="retry">Tentar Novamente</string>
+    <string name="algo_errado">Algo deu Errado</string>
+    <string name="vendor">vendor:</string>
+    <string name="status">Status:</string>
+    <string name="ar_condition">Ar Condition</string>
+    <string name="no_ar_condition">Nor Ar Condition</string>
+    <string name="passengers">Passengers</string>
+    <string name="total_price">Total price</string>
+    <string name="detail">Detail</string>
+</resources>
