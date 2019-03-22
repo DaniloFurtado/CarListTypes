@@ -12,4 +12,6 @@
     <string name="passengers">Passengers</string>
     <string name="total_price">Total price</string>
     <string name="detail">Detail</string>
+    <string name="pick_up_date">Pick Up Date:</string>
+    <string name="return_date">Return Date:</string>
 </resources>

@@ -7,7 +7,7 @@ class AvaibleCoreBind(
     var upDateTime: String,
     var returnDateTime: String,
     var upLocation: String,
-    var returnLocatino: String,
+    var returnLocation: String,
     var vehicles: List<VehicleBind>
 ) : Parcelable {
     constructor(source: Parcel) : this(
@@ -24,7 +24,7 @@ class AvaibleCoreBind(
         writeString(upDateTime)
         writeString(returnDateTime)
         writeString(upLocation)
-        writeString(returnLocatino)
+        writeString(returnLocation)
         writeTypedList(vehicles)
     }
 
