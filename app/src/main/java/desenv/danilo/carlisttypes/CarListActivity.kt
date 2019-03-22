@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.uber.autodispose.lifecycle.autoDisposable
 import desenv.danilo.carlisttypes.adapter.CarListAdatper
 import desenv.danilo.carlisttypes.databinding.ActivityMainBinding
-import desenv.danilo.carlisttypes.util.gone
-import desenv.danilo.carlisttypes.util.show
+import desenv.danilo.carlisttypes.util.extensions.gone
+import desenv.danilo.carlisttypes.util.extensions.show
 import desenv.danilo.modelbinding.VehicleBind
 import desenv.danilo.presentation.CarListViewModel
 import desenv.danilo.presentation.CarVmFactory

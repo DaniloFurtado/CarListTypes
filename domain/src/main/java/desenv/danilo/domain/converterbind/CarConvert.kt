@@ -3,6 +3,7 @@ package desenv.danilo.domain.converterbind
 import desenv.danilo.data.data.VehAvailRSCore
 import desenv.danilo.data.data.VehAvails
 import desenv.danilo.data.data.Vendor
+import desenv.danilo.domain.extentions.toFormaStringDate
 import desenv.danilo.modelbinding.AvaibleCoreBind
 import desenv.danilo.modelbinding.VehicleBind
 import desenv.danilo.modelbinding.VendorBind
@@ -10,8 +11,10 @@ import desenv.danilo.modelbinding.VendorBind
 object CarConvert {
 
     fun fromDataAvaibleCore(veh: VehAvailRSCore): AvaibleCoreBind {
-        return AvaibleCoreBind(veh.vehRentalCore.pickUpDateTime,
-            veh.vehRentalCore.returnDateTime,
+
+        return AvaibleCoreBind(
+            veh.vehRentalCore.pickUpDateTime.toFormaStringDate(),
+            veh.vehRentalCore.returnDateTime.toFormaStringDate(),
             veh.vehRentalCore.pickUpLocation.name,
             veh.vehRentalCore.returnLocation.name,
             getListOfCars(veh).toList())

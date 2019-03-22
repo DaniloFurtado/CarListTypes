@@ -1,4 +1,4 @@
-package desenv.danilo.carlisttypes.util
+package desenv.danilo.carlisttypes.util.bindable
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
