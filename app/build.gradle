@@ -72,7 +72,7 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
 
     implementation project(":modelbinding")
     implementation project(":presentation")
