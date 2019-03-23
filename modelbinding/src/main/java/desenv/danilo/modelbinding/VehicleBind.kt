@@ -15,6 +15,7 @@ class VehicleBind(
     var vendor: VendorBind,
     var makeModel: String
 ) : Parcelable {
+
     constructor(source: Parcel) : this(
         source.readString(),
         1 == source.readInt(),

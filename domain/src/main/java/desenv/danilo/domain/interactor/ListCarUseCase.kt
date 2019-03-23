@@ -12,10 +12,15 @@ open class ListCarUseCase @Inject constructor (
     private val repository: CarRepository,
     schedulerProvider: BaseSchedulerProvider
 ): SingleUseCase<AvaibleCoreBind, Unit>(schedulerProvider) {
+
     override fun buildSingleUseCase(params: Unit?): Single<AvaibleCoreBind> {
         return repository.getAllCar()
             .map {
-                CarConvert.fromDataAvaibleCore(it)
+                val avaibleCore = CarConvert.fromDataAvaibleCore(it)
+                avaibleCore.vehicles = avaibleCore.vehicles.sortedWith(compareBy { it.rateTotalAmount.toDouble() })
+
+                avaibleCore
+
             }
     }
 

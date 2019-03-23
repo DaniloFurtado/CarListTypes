@@ -29,8 +29,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingRight="8dp"
-                    android:paddingLeft="8dp"
                     android:background="@color/brown"
                     app:layout_scrollFlags="scroll|enterAlways|snap">
 

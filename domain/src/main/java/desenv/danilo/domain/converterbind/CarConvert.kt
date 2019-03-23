@@ -17,7 +17,8 @@ object CarConvert {
             veh.vehRentalCore.returnDateTime.toFormaStringDate(),
             veh.vehRentalCore.pickUpLocation.name,
             veh.vehRentalCore.returnLocation.name,
-            getListOfCars(veh).toList())
+            getListOfCars(veh).toMutableList()
+        )
     }
 
     private fun getListOfCars(veh: VehAvailRSCore): MutableList<VehicleBind> {
