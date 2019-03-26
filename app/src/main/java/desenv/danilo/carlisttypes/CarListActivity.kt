@@ -2,23 +2,28 @@ package desenv.danilo.carlisttypes
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.uber.autodispose.lifecycle.autoDisposable
 import desenv.danilo.carlisttypes.adapter.CarListAdatper
 import desenv.danilo.carlisttypes.databinding.ActivityMainBinding
 import desenv.danilo.carlisttypes.util.extensions.gone
 import desenv.danilo.carlisttypes.util.extensions.show
+import desenv.danilo.modelbinding.TypeSortList
 import desenv.danilo.modelbinding.VehicleBind
 import desenv.danilo.presentation.CarListViewModel
 import desenv.danilo.presentation.CarVmFactory
 import desenv.danilo.presentation.ViewErrorState
 import desenv.danilo.presentation.ViewState
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.menu_bottom_sort.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.cancelButton
 import org.jetbrains.anko.toast
@@ -39,6 +44,9 @@ class CarListActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<View>
+
+
     private val viewModel: CarListViewModel by lazy {
         ViewModelProviders.of(this,
             factoryVm)
@@ -52,6 +60,26 @@ class CarListActivity : BaseActivity() {
         addObserver(viewModel)
         initActivity()
         carListAdapter.setInilistenerClick(::userSelected)
+
+        initBottomSheet()
+    }
+
+    private fun initBottomSheet() {
+        bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_layout)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        layoutLowestPrice.setOnClickListener {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            viewModel.sortByLowestPrice(binding.itemCore?.vehicles) {
+                (recyclerList.adapter as CarListAdatper).setItems(it)
+            }
+        }
+
+        layoutHighestPrice.setOnClickListener {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            viewModel.sortByHighestPrice(binding.itemCore?.vehicles) {
+                (recyclerList.adapter as CarListAdatper).setItems(it)
+            }
+        }
     }
 
     private fun initActivity() {
@@ -85,24 +113,59 @@ class CarListActivity : BaseActivity() {
                     }
                     ViewErrorState.TypeExibe.ALERT -> {
                         finishLoad()
-                        alert(getString(it.idMessage)) {
-                            title = getString(R.string.algo_errado)
-                            isCancelable = false
-                            if (it.retry){
-                                positiveButton(R.string.retry) {
-                                    loadList()
-                                }
-                                cancelButton {
-
-                                }
-                            }else
-                                yesButton {
-
-                                }
-                        }.show()
+                        showAlert(it)
                     }
                 }
             }
+    }
+
+    private fun showAlert(it: ViewErrorState) {
+        alert(getString(it.idMessage)) {
+            title = getString(R.string.algo_errado)
+            isCancelable = false
+            if (it.retry) {
+                positiveButton(R.string.retry) {
+                    loadList()
+                }
+                cancelButton {
+
+                }
+            } else
+                yesButton {
+
+                }
+        }.show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.sortMenu) {
+            showBottomSheet()
+        }
+        return true
+    }
+
+    private fun showBottomSheet() {
+        if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+            configOptionsBottom()
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
+        } else {
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN)
+        }
+    }
+
+    private fun configOptionsBottom() {
+        if (TypeSortList.LOWEST_PRICE == viewModel.getTypeSortList()) {
+            checkLowestPrice.isChecked = true
+            checkHighPrice.isChecked = false
+        } else {
+            checkLowestPrice.isChecked = false
+            checkHighPrice.isChecked = true
+        }
     }
 
     private fun loadList(){

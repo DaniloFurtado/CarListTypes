@@ -5,6 +5,7 @@ import desenv.danilo.domain.SingleUseCase
 import desenv.danilo.domain.converterbind.CarConvert
 import desenv.danilo.domain.executor.BaseSchedulerProvider
 import desenv.danilo.modelbinding.AvaibleCoreBind
+import desenv.danilo.modelbinding.VehicleBind
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -17,12 +18,16 @@ open class ListCarUseCase @Inject constructor (
         return repository.getAllCar()
             .map {
                 val avaibleCore = CarConvert.fromDataAvaibleCore(it)
-                avaibleCore.vehicles = avaibleCore.vehicles.sortedWith(compareBy { it.rateTotalAmount.toDouble() })
-
+                avaibleCore.vehicles = sortListCar(avaibleCore.vehicles)
                 avaibleCore
-
             }
     }
 
+
+    fun sortListCar(vehicles: List<VehicleBind>): List<VehicleBind> {
+        return vehicles.sortedBy {
+            it.rateTotalAmount.toDouble()
+        }
+    }
 
 }

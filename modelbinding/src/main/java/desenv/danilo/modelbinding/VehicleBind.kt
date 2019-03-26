@@ -14,7 +14,13 @@ class VehicleBind(
     var rateTotalAmount: String,
     var vendor: VendorBind,
     var makeModel: String
-) : Parcelable {
+) : Parcelable, Comparable<Double> {
+    override fun compareTo(other: Double): Int {
+        return if (this.rateTotalAmount.toDouble() > other)
+            1
+        else
+            0
+    }
 
     constructor(source: Parcel) : this(
         source.readString(),

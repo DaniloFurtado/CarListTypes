@@ -10,6 +10,7 @@ class AvaibleCoreBind(
     var returnLocation: String,
     var vehicles: List<VehicleBind>
 ) : Parcelable {
+
     fun quantityVehicles() = this.vehicles.size.toString()
 
     constructor(source: Parcel) : this(

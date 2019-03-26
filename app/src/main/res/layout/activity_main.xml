@@ -4,11 +4,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="itemCore" type="desenv.danilo.modelbinding.AvaibleCoreBind"/>
+        <import type="android.view.View"/>
     </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/rootLayouMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
 
         <com.google.android.material.appbar.AppBarLayout
                 android:layout_height="wrap_content"
@@ -104,6 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/cars"
+                        android:visibility="@{itemCore.quantityVehicles().length() > 0 ? View.VISIBLE :  View.INVISIBLE}"
                         android:hint="cars"
                         android:textColor="@android:color/primary_text_light_nodisable"
                         app:layout_constraintStart_toEndOf="@+id/descVehicles"
@@ -144,12 +147,13 @@
                     style="?android:attr/progressBarStyle"
                     android:visibility="gone"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:layout_marginBottom="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="160dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <include
+                layout="@layout/menu_bottom_sort"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
