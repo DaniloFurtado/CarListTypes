@@ -15,6 +15,6 @@
     <string name="pick_up_date">Pick Up Date:</string>
     <string name="return_date">Return Date:</string>
     <string name="cars">Cars</string>
-    <string name="sort">Sort</string>
+
     <string name="sort">Sort</string>
 </resources>
